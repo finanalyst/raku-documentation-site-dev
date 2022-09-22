@@ -14,7 +14,7 @@ use v6.d;
     :mode<Website>, # the default mode, which must exist
     :ignore< 404 HomePage >,
     :extensions< rakudoc pod pod6 raku p6 pm pm6 rakumod >,
-    :asset-basename<assets>,
+    :asset-basename<asset_base>, # using _ so that it is not a valid Mode name
     :asset-paths( %( # type of asset is key, then metadata for that type
         image => %(
             :directory<images>,

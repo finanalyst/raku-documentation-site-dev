@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+cd Collection
+zip -p ../raku-collection.zip -r *
