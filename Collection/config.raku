@@ -1,6 +1,6 @@
 use v6.d;
 %(
-    :cache<doc-cache>, # location relative to collection root of cached Pod
+    :cache<doc_cache>, # location relative to collection root of cached Pod
     :sources<local_raku_docs/doc>, # location of sources
     #| the array of strings sent to the OS by run to obtain sources, eg git clone
     #| assumes CWD set to the directory of collection
