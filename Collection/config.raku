@@ -12,7 +12,7 @@ use v6.d;
     :source-refresh<git -C local_raku_docs/ pull>,
     :!no-status, # show progress
     :mode<Website>, # the default mode, which must exist
-    :ignore< 404 HomePage >,
+    :ignore< 404.pod6 HomePage.pod6 >,
     :extensions< rakudoc pod pod6 raku p6 pm pm6 rakumod >,
     :asset-basename<asset_base>, # using _ so that it is not a valid Mode name
     :asset-paths( %( # type of asset is key, then metadata for that type
