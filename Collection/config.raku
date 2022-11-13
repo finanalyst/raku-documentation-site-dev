@@ -10,7 +10,11 @@ use v6.d;
     #| assumes CWD set to the directory of sources
     #:source-refresh(),
     :source-refresh<git -C local_raku_docs/ pull>,
-    :!no-status, # show progress
+    # processing options independent of Mode
+    # by default, unless set in config file, options are False
+    :!without-processing, # process all files if possible
+    :!no-refresh, # call the refresh step after initiation
+    :!recompile, # if true, force a recompilation of the source files when refresh is called
     :mode<Website>, # the default mode, which must exist
     :ignore< 404.pod6 HomePage.pod6 >,
     :extensions< rakudoc pod pod6 raku p6 pm pm6 rakumod >,

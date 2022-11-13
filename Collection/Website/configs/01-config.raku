@@ -1,14 +1,4 @@
 %(
-    # processing options independent of Mode
-    # by default, unless set in config file, options are False
-    :!collection-info, # do not show milestone data
-    :!without-processing, # process all files if possible
-    :!without-report, # make a report - default is False, but set True
-    :!without-completion, # we want the Cro app to start
-    :no-refresh, # do not call the refresh step after the first run
-    :!recompile, # if true, force a recompilation of the source files when refresh is called
-    :!full-render, # force rendering of all output files
-    :no-preserve-state, # we do not want to archive intermediate data
     :mode-sources<structure-sources>, # content for the website structure
     :mode-cache<structure-cache>, # cache for the above
     :mode-ignore(), # no files to ignore
@@ -22,8 +12,10 @@
     :report-path<reports>,
     :output-ext<html>,
     :templates<templates>,
-    completion-options => %(
-        :port<30000>,
-        :host<0.0.0.0>,
-    ),
+    :!no-status, # show progress
+    :!collection-info, # do not show milestone data
+    :!without-report, # make a report - default is False, but set True
+    :!without-completion, # we want the Cro app to start
+    :!full-render, # force rendering of all output files
+    :no-preserve-state, # we do not want to archive intermediate data
 )
