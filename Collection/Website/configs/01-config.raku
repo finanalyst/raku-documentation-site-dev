@@ -1,16 +1,19 @@
 %(
-    :!no-refresh, # do not call the refresh step after the first run
+    # processing options independent of Mode
+    # by default, unless set in config file, options are False
+    :!collection-info, # do not show milestone data
+    :!without-processing, # process all files if possible
+    :!without-report, # make a report - default is False, but set True
+    :!without-completion, # we want the Cro app to start
+    :no-refresh, # do not call the refresh step after the first run
     :!recompile, # if true, force a recompilation of the source files when refresh is called
     :!full-render, # force rendering of all output files
-    :!no-report, # do not make a report - default is False, but set True
-    :!no-completion, # we want the Cro app to start
     :no-preserve-state, # we do not want to archive intermediate data
     :mode-sources<structure-sources>, # content for the website structure
     :mode-cache<structure-cache>, # cache for the above
     :mode-ignore(), # no files to ignore
     :mode-obtain(), # not a remote repository
     :mode-refresh(), # ditto
-    :!collection-info, # show milestone data
     :mode-extensions<rakudoc pod6>, # only use these for content
     :no-code-escape,# must use this when using highlighter
     :destination<../rendered_html>, # where the html files will be sent relative to Mode directory
