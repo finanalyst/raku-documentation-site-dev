@@ -47,27 +47,22 @@ use ProcessedPod;
     'format-u' => sub ( %prm, %tml ) { '<u>' ~ %prm<contents> ~ '</u>'},
     'para' => sub ( %prm, %tml ) { '<p>' ~ %prm<contents> ~ '</p>'},
     'format-l' => sub ( %prm, %tml ) {
-        # transform a local file with an internal target
+        # local: <link-label> -> <target>.html#<place> | <target>.html
+        # internal: <link-label> -> #<place>
+        # external: <link-label> -> <target>
         my $trg = %prm<target>;
         if %prm<local> {
-            if $trg ~~ / (<-[#]>+) '#' (.+) $ / {
-                $trg = "$0\.html\#$1";
-            }
-            else {
-                $trg ~= '.html'
-            }
+            $trg ~= '.html';
+            $trg ~= '#' ~ %prm<place> if %prm<place>
         }
         elsif %prm<internal> {
-            $trg = "#$trg"
+            $trg = '#' ~ %prm<place>
         }
-
         '<a href="'
-            ~ $trg
-            ~ '"'
-            ~ ( %prm<class> ?? (' class="' ~ %prm<class> ~ '"') !! '')
-            ~ '>'
-            ~ (%prm<contents> // '')
-            ~ '</a>'
+                ~ $trg
+                ~ '">'
+                ~ (%prm<link-label> // '')
+                ~ '</a>'
     },
     'format-n' => sub ( %prm, %tml ) {
         '<sup class="content-footnote"><a name="'
@@ -92,7 +87,7 @@ use ProcessedPod;
             ~ '"><a href="#'
             ~ %tml<escaped>(%prm<top>)
             ~ '" class="u" title="go to top of document">'
-            ~ (( %prm<text>.defined && %prm<text> ne '') ?? %prm<text> !! '')
+            ~ (%prm<text> // '')
             ~ '</a></h'
             ~ (%prm<level> // '1')
             ~ ">\n"
@@ -116,16 +111,18 @@ use ProcessedPod;
                 ~ "</ul>\n"
     },
     'unknown-name' => sub ( %prm, %tml ) {
-        "<section>\n<h"
+        "\n<section>\<fieldset class=\"RakudocError\">\<legend>This Block name is not known, could be a typo or missing plugin\</legend>\n<h"
                 ~ (%prm<level> // '1') ~ ' id="'
                 ~ %tml<escaped>(%prm<target>) ~ '"><a href="#'
                 ~ %tml<escaped>(%prm<top> // '')
                 ~ '" class="u" title="go to top of document">'
-                ~ (( %prm<name>.defined && %prm<name> ne '' ) ?? %prm<name> !! '')
+                ~ (%prm<name> // '')
                 ~ '</a></h' ~ (%prm<level> // '1') ~ ">\n"
+                ~ '<fieldset class="contents-container"><legend>Contents are</legend>' ~ "\n"
                 ~ (%prm<contents> // '')
+                ~ "</fieldset>\n"
                 ~ (%prm<tail> // '')
-                ~ "\n</section>\n"
+                ~ "\n</fieldset>\</section>\n"
     },
     'output' => sub ( %prm, %tml ) { '<pre class="pod-output">' ~ (%prm<contents> // '') ~ '</pre>' },
     'page-top' => sub ( %prm, %tml ) {

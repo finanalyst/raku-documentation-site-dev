@@ -6,7 +6,7 @@ These are the cool possibilities using the C<Collection> and C<Raku::Pod::Render
 
 (The repeated headings in the Table of Contents are deliberate, as will become clear in this text.)
 
-=head1 Assigning new classes to standard HTML templates.
+=head1 Assigning new classes to HTML containers.
 
 For example, C< <hr> >.
 
@@ -409,5 +409,22 @@ This plugin block sends the Latex markup to the CodeCogs online equation editor.
 &= \frac{(k+1)^{2}(k^{2} + 4k + 4)}{4}\\
 &= \frac{(k+1)^{2}(k+2)^{2}}{4}
 \end{align*}
+
+head1 Errors
+
+If a block is used in a Rakudoc document that is misspelt or a Custom plugin has not been correctly
+defined, then the C<ProcessedPod> renderer will render the block as an Unknown Name with an error
+message. For example, suppose 'head' is misspelt as 'header'.
+
+=begin code
+=header1 This should be a header
+
+This is some text
+=end code
+
+renders as:
+=header1 This should be a header
+
+This is some text
 
 =end pod
