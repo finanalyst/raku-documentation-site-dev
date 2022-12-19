@@ -3,6 +3,7 @@ use ProcessedPod;
 %(
 # the following are extra for HTML files and are needed by the render (class) method
 # in the source-wrap template.
+    '_templater' => 'RakuClosureTemplater',
     'escaped' => sub ( $s ) {
         if $s and $s ne ''
         { $s.trans(qw｢ <    >    &     " ｣ => qw｢ &lt; &gt; &amp; &quot; ｣) }
@@ -81,7 +82,7 @@ use ProcessedPod;
                 ~ ( ( %prm<text>.defined and %prm<text> ne '' ) ?? '<span class="glossary-entry">' ~ %prm<text> ~ '</span>' !! '')
     },
     'heading' => sub ( %prm, %tml ) {
-        '<h' ~ (%prm<level> // '1')
+        "\n<h" ~ (%prm<level> // '1')
             ~ ' id="'
             ~ %tml<escaped>(%prm<target>)
             ~ '"><a href="#'
@@ -111,6 +112,12 @@ use ProcessedPod;
                 ~ "</ul>\n"
     },
     'unknown-name' => sub ( %prm, %tml ) {
+        with %prm<format-code> {
+            '<span class="RakudocNoFormatCode">'
+            ~ "<span>unknown format-code $_\</span>\&lt;\<span>{ %prm<contents> }\</span>|\<span>{ %prm<meta> }\</span>"
+            ~ '&gt;</span>'
+        }
+        else {
         "\n<section>\<fieldset class=\"RakudocError\">\<legend>This Block name is not known, could be a typo or missing plugin\</legend>\n<h"
                 ~ (%prm<level> // '1') ~ ' id="'
                 ~ %tml<escaped>(%prm<target>) ~ '"><a href="#'
@@ -123,6 +130,7 @@ use ProcessedPod;
                 ~ "</fieldset>\n"
                 ~ (%prm<tail> // '')
                 ~ "\n</fieldset>\</section>\n"
+        }
     },
     'output' => sub ( %prm, %tml ) { '<pre class="pod-output">' ~ (%prm<contents> // '') ~ '</pre>' },
     'page-top' => sub ( %prm, %tml ) {
@@ -298,11 +306,10 @@ use ProcessedPod;
     'footer' => sub ( %prm, %tml ) {
         "\n"
         ~ '<footer><div>Rendered from <span class="path">'
-        ~ (( %prm<path>.defined && %prm<path> ne '') ?? %tml<escaped>(%prm<path>) !! 'No path')
+        ~ ( (%prm<config><path>:exists and  %prm<config><path> ne '') ?? %prm<config><path> !! 'no path' )
         ~ '</span></div>'
-        ~ '<!-- filename = ' ~ %prm<name> ~ '-->'
         ~ '<div>at <span class="time">'
-        ~ (( %prm<renderedtime>.defined && %prm<path> ne '') ?? %tml<escaped>(%prm<renderedtime>) !! 'a moment before time began!?')
+        ~ ( DateTime(now).truncated-to('second') )
         ~ '</span></div>'
         ~ "</footer>\n"
     },
