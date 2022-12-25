@@ -2,16 +2,16 @@
     :plugins<plugins>,
     :plugin-format<html>,
     plugins-required => %(
-        :setup<raku-doc-setup>,
+        :compilation<secondaries website listfiles link-error-test>,
+        :completion<cro-app>,
         :render<
             secondaries raku-styling website camelia simple-extras listfiles images font-awesome filterlines
-            leafletmap graphviz latex-render
+            leafletmap graphviz latex-render raku-repl
             link-error-test
             gather-js-jq gather-css
         >,
         :report<link-plugin-assets-report>,
-        :compilation<secondaries website listfiles link-error-test>,
+        :setup<raku-doc-setup>,
         :transfer<secondaries gather-js-jq gather-css>,
-        :completion<cro-app>,
     ),
 )
