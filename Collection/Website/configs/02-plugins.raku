@@ -6,7 +6,7 @@
         :completion<cro-app>,
         :render<
             secondaries raku-styling website camelia simple-extras listfiles images font-awesome filterlines
-            leafletmap graphviz latex-render raku-repl
+            leafletmap graphviz latex-render
             link-error-test
             gather-js-jq gather-css
         >,
