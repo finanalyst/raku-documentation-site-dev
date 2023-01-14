@@ -7,5 +7,9 @@
         link-error-test => %(
             :no-remote,
         ),
+        raku-repl => %(
+            :websocket-host<finanalyst.org>,
+            :websocket-port<443>,
+        ),
     ),
 )
