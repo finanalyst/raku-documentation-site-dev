@@ -1,14 +1,12 @@
 %(
     :mode-sources<structure-sources>, # content for the website structure
     :mode-cache<structure-cache>, # cache for the above
-    :mode-ignore<footnotes.rakudoc search.rakudoc collection-examples.rakudoc
-    error-report.rakudoc glossary.rakudoc toc.rakudoc
-    >, # files to ignore
+    :mode-ignore(), # files to ignore
     :mode-obtain(), # not a remote repository
     :mode-refresh(), # ditto
     :mode-extensions<rakudoc pod6>, # only use these for content
     :no-code-escape,# must use this when using highlighter
-    :destination<../new-raku/rendered_html>, # where the html files will be sent relative to Mode directory
+    :destination<../new_raku>, # where the html files will be sent relative to Mode directory
     :asset-out-path<assets>, # where the image assets will be sent relative to destination
     :landing-place<index>, # the first file
     :report-path<reports>,
