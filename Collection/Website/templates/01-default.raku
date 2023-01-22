@@ -297,14 +297,14 @@ use ProcessedPod;
         with %prm<notes> {
             if .elems {
                 "<div id=\"_Footnotes\" class=\"footnotes\">\n"
-                    ~ [~] .map({ '<div class="footnote" id="' ~ %tml<escaped>.($_<fnTarget>) ~ '">'
-                        ~ ('<span class="footnote-number">' ~ ($_<fnNumber> // '') ~ '</span>')
-                        ~ '<a class="footnote-linkback" href="#'
-                        ~ %tml<escaped>.($_<retTarget>)
-                        ~ '\"> [↑] </a>'
-                        ~ ($_<text> // '')
-                        ~ "</div>\n"
-                    })
+                    ~ [~] .map({ '<div class="footnote" id="' ~ %tml<escaped>($_<fnTarget>) ~ '">'
+                    ~ ('<span class="footnote-number">' ~ ($_<fnNumber> // '') ~ '</span>')
+                    ~ '<a class="footnote-linkback" href="#'
+                    ~ %tml<escaped>($_<retTarget>)
+                    ~ '"> [↑] </a>'
+                    ~ ($_<text> // '')
+                    ~ "</div>\n"
+                })
                 ~ "\n</div>\n"
             }
             else { '' }
