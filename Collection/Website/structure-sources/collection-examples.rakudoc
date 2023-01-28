@@ -90,11 +90,25 @@ Or bends with the remover to remove.
 
 =head1 New Format Codes
 
-Here is an example where the format code F has been leveraged to generate B<FontAwesome> icons.
-The plugin here utilises v5.15.4.
+Plugins also can be used to create new format code, in addition to the specified ones.
+
+The difference between a B<Pod-block> and a B<FormatCode> is that a block is line oriented,
+where as format codes are word/character oriented and can appear inside a line.
 
 Since Raku treats all Unicode characters the same, Chinese/Arabic/Cyrillic glyphs can now be
 specified to repeat or alias the predefined codes of C<B C I K T U E Z X N L P V >.
+This means a character/glyph more appropriate in another language can be used in place of,
+for example B<B> for bold.
+
+Here are two examples of new format codes:
+=item leveraging the format code V<F<>> to generate B<FontAwesome> icons.
+=item creating a deprecation code to show how information about changes to documentation
+can be signalled to the reader.
+
+=head2 Fontawesome v5.15.4
+
+The code only uses the free icons. See L<font search page|https://fontawesome.com/icons>.
+Make sure to filter for the free icons.
 
 =begin code
 Some FontAwesome icons
@@ -129,7 +143,7 @@ F<fas fa-truck> Example of truck
 
 F<fas fa-wheelchair> Example of wheelchair
 
-F<fab fa-accessible-icon> Example of accessible-icon (was wheelchair-alt in fontawesom v4)
+F<fab fa-accessible-icon> Example of accessible-icon (was wheelchair-alt in fontawesome v4)
 
 FontAwesome has some other options.
 =begin code
@@ -149,6 +163,23 @@ is not standard Rakudoc (aka POD6), as this metadata is only specified for C< X<
 C<Raku::Pod::Render>
 allows for metadata to be added to any I<non-standard> letter used as a Format Code, and
 any Unicode thingy that Raku treats as a "character" to be made into a Format Code.
+
+=head2 Deprecation code
+
+Suppose some functionality has been deprecated, or added, to documentation. Rather than
+deleting the documentation, and so hiding information from developers trying to maintain
+code, meta text is added to the code which can be viewed by hovering a mouse over it
+(when rendered into HTML, but another strategy can be adopted for other formats).
+
+For example, the following Rakudoc markup
+=begin code
+    This is some text about D<function this-might-be-useful(Str:D $indeed) | Replaced with function much-more-useful(Str:D $indeed)>.
+    Try hovering over the outlined text
+=end code
+renders as:
+
+This is some text about D<function this-might-be-useful(Str:D $indeed) | Replaced with function much-more-useful(Str:D $indeed)>.
+Try hovering over the outlined text
 
 =head1 Compilation blocks
 
