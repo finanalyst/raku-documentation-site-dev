@@ -6,12 +6,12 @@
         :render<
             ogdenwebb website camelia simple-extras listfiles images deprecate-span font-awesome filterlines
             tablemanager leafletmap graphviz latex-render secondaries typegraph
-            raku-repl
+            search-bar
             gather-js-jq gather-css
         >,
         :report<link-plugin-assets-report>,
-        :transfer<secondaries gather-js-jq gather-css images ogdenwebb>,
-        :compilation<secondaries website listfiles ogdenwebb>,
+        :transfer<secondaries gather-js-jq gather-css images search-bar>,
+        :compilation<secondaries website listfiles search-bar>,
         :completion<cro-app>,
     ),
 )
