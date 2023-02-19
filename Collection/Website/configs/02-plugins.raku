@@ -2,10 +2,10 @@
     :plugins<plugins>,
     :plugin-format<html>,
     plugins-required => %(
-        :setup<raku-doc-setup credits-page>,
+        :setup<raku-doc-setup credits-page git-reflog>,
         :render<
             ogdenwebb website camelia simple-extras listfiles images deprecate-span font-awesome filterlines
-            tablemanager leafletmap graphviz latex-render secondaries typegraph
+            tablemanager leafletmap graphviz latex-render secondaries typegraph git-reflog
             search-bar link-error-test
             gather-js-jq gather-css
         >,
