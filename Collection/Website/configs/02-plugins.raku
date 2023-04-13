@@ -5,7 +5,7 @@
         :setup<raku-doc-setup credits-page>,
         :render<
             ogdenwebb website camelia simple-extras listfiles images deprecate-span font-awesome filterlines
-            tablemanager leafletmap graphviz latex-render secondaries typegraph
+            tablemanager leafletmap graphviz latex-render secondaries typegraph generated
             search-bar link-error-test
             gather-js-jq gather-css
         >,
