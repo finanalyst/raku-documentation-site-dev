@@ -1,7 +1,8 @@
 =begin pod :no-glossary :page-content-columns
+
 =TITLE Raku Language Documentation
 
-Tutorials, general reference, migration guides and meta pages for the Raku language.
+=SUBTITLE Tutorials, general reference, migration guides and meta pages for the Raku language.
 
 =for ListFiles :select<kind=Language, category=beginning>
 At the beginning

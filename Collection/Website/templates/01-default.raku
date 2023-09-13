@@ -348,14 +348,20 @@ use ProcessedPod;
     },
     'meta' => sub (%prm, %tml) {
         with %prm<meta> {
-            [~] %prm<meta>.map({
-                '<meta name="' ~ %tml<escaped>.(.<name>)
-                    ~ '" value="' ~ %tml<escaped>.(.<value>)
-                    ~ "\" />\n"
+            [~] %prm<meta>
+                .grep({ $_<name> ~~ any(<VERSION DESCRIPTION AUTHOR SUMMARY>) } )
+                .map({
+                '<meta name="' ~ .<name>.tclc
+                        ~ '" value="' ~ .<value>
+                        ~ "\" />\n"
             })
         }
         else { '' }
     },
+    'VERSION' => sub (%prm, %tml) { %prm<raw-contents> },
+    'DESCRIPTION' => sub (%prm, %tml) { %prm<raw-contents> },
+    'AUTHOR' => sub (%prm, %tml) { %prm<raw-contents> },
+    'SUMMARY' => sub (%prm, %tml) { %prm<raw-contents> },
     'toc' => sub (%prm, %tml) {
         if %prm<toc>.defined and %prm<toc>.keys {
             "<div id=\"_TOC\"><table>\n<caption>Table of Contents</caption>\n"
@@ -390,7 +396,7 @@ use ProcessedPod;
             ~ '<a class="error-report" href="/error-report.html">Errors</a>'
             ~ '<a class="extra" href="/collection-examples.html">Collection</a>'
             ~ '<div class="menu">' ~ "\n"
-            ~ '<a href="https://raku.org"><div class="menu-item">Raku homepage</div></a>'
+            ~ '<a href="https://raku.org"><div class="menu-item">Raku™ homepage</div></a>'
             ~ '<a href="/language.html"><div class="menu-item">Language</div></a>'
             ~ '<a href="/search.html"><div class="menu-item">Search Site</div></a>'
             ~ '<a href="/types.html"><div class="menu-item">Types</div></a>'
