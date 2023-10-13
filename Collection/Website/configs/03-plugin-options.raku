@@ -8,9 +8,8 @@
         link-error-test => %(
             :no-remote,
         ),
-        raku-repl => %(
-            :websocket-host<finanalyst.org>,
-            :websocket-port<443>,
+        sitemap => %(
+            :root-domain<https://new-raku.finanalyst.org>,
         ),
     ),
 )

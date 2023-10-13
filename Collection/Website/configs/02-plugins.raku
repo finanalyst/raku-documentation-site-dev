@@ -14,8 +14,9 @@
             leafletmap latex-render graphviz
             link-error-test
             gather-js-jq gather-css
+            sitemap
         >,
-        :report<link-plugin-assets-report>,
+        :report<link-plugin-assets-report sitemap>,
         :transfer<secondaries gather-js-jq gather-css images options-search raku-doc-setup >,
         :compilation<secondaries listfiles link-error-test options-search>,
         :completion<cro-app>,
