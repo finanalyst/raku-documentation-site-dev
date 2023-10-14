@@ -10,6 +10,7 @@
         ),
         sitemap => %(
             :root-domain<https://new-raku.finanalyst.org>,
+            :sitemap-destination<../../new_raku>,
         ),
     ),
 )
