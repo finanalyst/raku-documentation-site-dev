@@ -15,7 +15,7 @@ to a non-existent web page (404 error), or to the top of a file when a place ins
 or some other error.
 
 =item Click on the edit button at the top of the source webpage, which takes you to the documentation source
-(a file with the extension C<.pod6>). Locate the C< L<link label|link target> > that corresponds to the
+(a file with the extension C<.rakudoc>). Locate the C< L<link label|link target> > that corresponds to the
 erroneous link.
 
 =item Work out what the mistake is, eg., a typo, or even the absence of an previously existing site.
