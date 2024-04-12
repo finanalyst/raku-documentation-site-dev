@@ -14,5 +14,9 @@
             :root-domain<https://new-raku.finanalyst.org>,
             :sitemap-destination<../../new_raku>,
         ),
+        sqlite-db => %(
+            :database-dir<../../sqlite_dir>,
+            :db-filename<sqlite-routines.sql>,
+        ),
     ),
 )
