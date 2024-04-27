@@ -5,15 +5,13 @@
         :setup<raku-doc-setup>,
         :render<
             hiliter
-            ebook-embed
-            font-awesome rakudoc-table
-            camelia
+            ebook-embedrakudoc-table
             generated
             gather-css
         >,
-        :report<link-plugin-assets-report>,
-        :transfer<gather-css raku-doc-setup ebook-embed>,
-        :compilation<ebook-embed>,
+        :report(),
+        :transfer<gather-css raku-doc-setup ebook-embed ebook-embed>,
+        :compilation(),
         :completion<ebook-embed>,
     ),
 )
