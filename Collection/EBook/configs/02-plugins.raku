@@ -5,7 +5,7 @@
         :setup<raku-doc-setup>,
         :render<
             hiliter
-            ebook-embedrakudoc-table
+            ebook-embed rakudoc-table
             generated
             gather-css
         >,
