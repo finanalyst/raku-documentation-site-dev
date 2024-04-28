@@ -20,7 +20,7 @@
     :!no-status, # show progress
     :!collection-info, # do not show milestone data
     :!without-report, # make a report - default is False, but set True
-    :!without-completion, # we want the Cro app to start
+    :without-completion, # we want the Cro app to start
     :!full-render, # force rendering of all output files
     :no-preserve-state, # we do not want to archive intermediate data
 )
