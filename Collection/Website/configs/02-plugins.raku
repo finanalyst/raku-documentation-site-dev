@@ -5,7 +5,7 @@
         :setup<raku-doc-setup>,
         :render<
             hiliter font-awesome tablemanager
-            page-styling
+            page-styling announcements
             rakudoc-table
             camelia simple-extras listfiles images deprecate-span filterlines
             secondaries typegraph generated
@@ -17,7 +17,9 @@
             sitemap
         >,
         :report<link-plugin-assets-report sitemap>,
-        :transfer<secondaries gather-js-jq gather-css images options-search raku-doc-setup >,
+        :transfer<secondaries gather-js-jq gather-css images
+            options-search raku-doc-setup
+            announcements announcements>,
         :compilation<secondaries listfiles link-error-test options-search>,
         :completion<cro-app>,
     ),
