@@ -4,7 +4,8 @@
     plugins-required => %(
         :setup<raku-doc-setup>,
         :render<
-            hiliter font-awesome tablemanager
+            rainbow
+            font-awesome tablemanager
             page-styling announcements
             rakudoc-table
             camelia simple-extras listfiles images deprecate-span filterlines
